@@ -3,7 +3,7 @@ using SocialNetwork.BLL.Models;
 using SocialNetwork.BLL.Services;
 using SocialNetwork.PLL.Views;
 
-namespace SocialNetwork
+namespace SocialNetwork.PLL
 {
     class Program
     {
