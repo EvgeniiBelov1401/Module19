@@ -7,19 +7,19 @@ namespace SocialNetwork
 {
     class Program
     {
-        static MessageService messageService;
-        static UserService userService;
-        public static MainView mainView;
-        public static RegistrationView registrationView;
-        public static AuthenticationView authenticationView;
-        public static UserMenuView userMenuView;
-        public static UserInfoView userInfoView;
-        public static UserDataUpdateView userDataUpdateView;
-        public static MessageSendingView messageSendingView;
-        public static UserIncomingMessageView userIncomingMessageView;
-        public static UserOutcomingMessageView userOutcomingMessageView;
-        public static AddingFriendView addingFriendView;
-        public static UserFriendView userFriendView;
+        static MessageService? messageService;
+        static UserService? userService;
+        public static MainView? mainView;
+        public static RegistrationView? registrationView;
+        public static AuthenticationView? authenticationView;
+        public static UserMenuView? userMenuView;
+        public static UserInfoView? userInfoView;
+        public static UserDataUpdateView? userDataUpdateView;
+        public static MessageSendingView? messageSendingView;
+        public static UserIncomingMessageView? userIncomingMessageView;
+        public static UserOutcomingMessageView? userOutcomingMessageView;
+        public static AddingFriendView? addingFriendView;
+        public static UserFriendView? userFriendView;
 
         static void Main(string[] args)
         {

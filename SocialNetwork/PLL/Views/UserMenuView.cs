@@ -33,7 +33,7 @@ namespace SocialNetwork.PLL.Views
                 Console.WriteLine("Просмотреть моих друзей (нажмите 7)");
                 Console.WriteLine("Выйти из профиля (нажмите 8)");
 
-                string keyValue = Console.ReadLine();
+                string? keyValue = Console.ReadLine();
 
                 if (keyValue == "8") break;
 
