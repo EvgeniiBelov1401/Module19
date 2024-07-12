@@ -15,9 +15,12 @@ namespace SocialNetwork.BLL.Services
     {
         MessageService messageService;
         IUserRepository userRepository;
+        IFriendRepository friendRepository;
+
         public UserService()
         {
             userRepository = new UserRepository();
+            friendRepository = new FriendRepository();
             messageService = new MessageService();
         }
 
@@ -102,11 +105,32 @@ namespace SocialNetwork.BLL.Services
                 throw new Exception();
         }
 
+        public IEnumerable<User> GetFriendsByUserId(int userId)
+        {
+            return friendRepository.FindAllByUserId(userId)
+                    .Select(friendsEntity => FindById(friendsEntity.friend_id));
+        }
+
+        public void AddFriend(UserAddingFriendData userAddingFriendData)
+        {
+            var findUserEntity = userRepository.FindByEmail(userAddingFriendData.FriendEmail);
+            if (findUserEntity is null) throw new UserNotFoundException();
+
+            var friendEntity = new FriendEntity()
+            {
+                user_id = userAddingFriendData.UserId,
+                friend_id = findUserEntity.id
+            };
+
+            if (this.friendRepository.Create(friendEntity) == 0)
+                throw new Exception();
+        }
+
         private User ConstructUserModel(UserEntity userEntity)
         {
             var incomingMessages = messageService.GetIncomingMessagesByUserId(userEntity.id);
-
             var outgoingMessages = messageService.GetOutcomingMessagesByUserId(userEntity.id);
+            var friends = GetFriendsByUserId(userEntity.id);
 
             return new User(userEntity.id,
                           userEntity.firstname,
@@ -117,7 +141,8 @@ namespace SocialNetwork.BLL.Services
                           userEntity.favorite_movie,
                           userEntity.favorite_book,
                           incomingMessages,
-                          outgoingMessages
+                          outgoingMessages,
+                          friends
                           );
         }
     }

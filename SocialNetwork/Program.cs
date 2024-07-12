@@ -18,6 +18,8 @@ namespace SocialNetwork
         public static MessageSendingView messageSendingView;
         public static UserIncomingMessageView userIncomingMessageView;
         public static UserOutcomingMessageView userOutcomingMessageView;
+        public static AddingFriendView addingFriendView;
+        public static UserFriendView userFriendView;
 
         static void Main(string[] args)
         {
@@ -33,6 +35,8 @@ namespace SocialNetwork
             messageSendingView = new MessageSendingView(messageService, userService);
             userIncomingMessageView = new UserIncomingMessageView();
             userOutcomingMessageView = new UserOutcomingMessageView();
+            addingFriendView = new AddingFriendView(userService);
+            userFriendView = new UserFriendView();
 
             while (true)
             {
@@ -41,3 +45,4 @@ namespace SocialNetwork
         }
     }
 }
+
