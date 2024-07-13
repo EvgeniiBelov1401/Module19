@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 namespace SocialNetwork.Tests
 {
     public class MessageServiceTests
-    {
-       
+    {      
         [Fact]
         public void SendMessageMustGetNotNullMessage()
         {         
@@ -40,8 +39,6 @@ namespace SocialNetwork.Tests
             };
 
             Assert.False(messageRepository.Create(messageEntity) == 0);
-        }
-
-       
+        }       
     }
 }
